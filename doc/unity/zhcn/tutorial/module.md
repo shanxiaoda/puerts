@@ -81,7 +81,15 @@ class MyLoader: ILoader, IModuleChecker {
 var loader = new MyLoader();
 var env = new JsEnv(loader);
 ```
-
+如果你希望 ExecuteModule 时返回 Action ，那么需要指定第二个参数 exportee
+exportee的意思是 获取模块命名空间的指定成员
+举个例子
+你导出了一个方法 export default function resetAllFunctionWhenDisposed() 
+那么你需要这么写 ExecuteModule<Action>("(*.mjs", "default");
+如果导出的是
+function update() {}
+export { update };
+那么就需要 ExecuteModule<Action>("*.mjs","update");
 -------------------
 
 通过以上写法，即可利用puerts加载js文件并执行，而不需要使用前面例子中的Eval（也不建议您正式开发时使用）。
