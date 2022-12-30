@@ -25,3 +25,10 @@
 在使用 Typescript 时，PuerTS 提供了一个生成 dts 声明文件的能力。有了它，你在Typescript 里调用任何 Unity API 时就可以有代码提示了。
 
 这个功能在Unity编辑器菜单的 `PuerTS->Generate index.d.ts`处。
+目前最新版官方推荐使用的是 Generate index.d.ts (global.CS style) 命令
+而另一个命令 Generate index.d.ts (require('csharp') style) 以后会废弃。
+
+ESM 模块对应的的 ts 文件后缀名是.mts
+这个特性是在 typescript-4-7 里加入的
+具体可以看 https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html
+这时候再编译出js后，会发现后缀变成了.mjs，并且里面的引入也变成了.mjs
